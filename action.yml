@@ -1,0 +1,19 @@
+name: 'Buildpack.io installer'
+description: 'Install the buildpack binary.'
+branding:
+  color: 'blue'
+  icon: 'arrow-down-circle'
+runs:
+  using: 'composite'
+  steps:
+    - name: Add repository
+      shell: bash
+      run: sudo add-apt-repository ppa:cncf-buildpacks/pack-cli -y
+    
+    - name: Update
+      shell: bash
+      run: sudo apt-get update -y
+
+    - name: Install buildpack
+      shell: bash
+      run: sudo apt-get install pack-cli -y
